@@ -8,11 +8,14 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         EnemyName();
+        RandomStatus();
+        HpMadness();
     }
 
     private void Update()
     {
         IsDead();
+        HpMadness();
         RegenHP();
     }
 
@@ -27,7 +30,7 @@ public class Enemy : MonoBehaviour
     //variables 4 
     protected float regenTimer = 0f;
     //variables 5 
-    protected bool madNessMode = false;
+    [SerializeField] public bool madNessMode = false;
     // 5 Enemies methods
 
     //Method 1
@@ -67,4 +70,11 @@ public class Enemy : MonoBehaviour
         Debug.Log("Madness mode: " + madNessMode);
     }
     //Method 5
+    protected void HpMadness()
+    {
+        if ( this. madNessMode == true )
+        {
+            healthRegen = 5;
+        }
+    }
 }
